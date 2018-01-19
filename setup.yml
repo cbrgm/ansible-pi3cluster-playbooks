@@ -1,0 +1,12 @@
+---
+
+- name: Deploying default node configuration to {{ hosts }}
+  hosts: '{{ hosts }}'
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  vars:
+    user_password: '{{ password }}'
+    user_name: '{{ username }}'
+  roles:
+    - basic

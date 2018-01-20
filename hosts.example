@@ -1,0 +1,27 @@
+# This is the default ansible 'hosts' file.
+#
+# It should live in /etc/ansible/hosts
+#
+#   - Comments begin with the '#' character
+#   - Blank lines are ignored
+#   - Groups of hosts are delimited by [header] elements
+#   - You can enter hostnames or ip addresses
+#   - A hostname/ip can be a member of multiple groups
+
+# Ex 1: Ungrouped hosts, specify before any group headers.
+
+[cluster]
+flagship ansible_host=172.16.1.10
+ship1 ansible_host=172.16.1.11
+ship2 ansible_host=172.16.1.12
+ship3 ansible_host=172.16.1.13
+ship4 ansible_host=172.16.1.14
+
+[testnodes]
+ship4 ansible_host=172.16.1.14
+
+[master]
+172.16.1.14
+
+[nodes]
+172.16.1.[11:14]

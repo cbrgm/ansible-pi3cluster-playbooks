@@ -1,5 +1,9 @@
 ---
 
+- name: Setup update and install basic packages (including docker, kubernetes)
+  include: apt.yml
+  when: hosts is defined
+
 - name: Setup standard user
   include: user.yml
   when: password is defined and username is defined and hosts is defined

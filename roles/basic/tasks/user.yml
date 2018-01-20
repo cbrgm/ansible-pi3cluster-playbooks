@@ -10,7 +10,7 @@
     name: "{{ user_name }}"
     password: "{{ user_password | password_hash('sha512')}}"
     group: "{{ user_name }}"
-    groups: sudo
+    groups: sudo, docker
     append: yes
     shell: /bin/bash
     system: no

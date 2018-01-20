@@ -1,0 +1,26 @@
+- name: Add Kubernetes repository key
+  apt_key: url=https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+- name: Add Kubernetes repository to /etc/apt/sources.list.d/kubernetes.list
+  apt_repository:
+          repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+          filename: kubernetes
+          state: present
+          
+
+- name: Update packages
+  apt:
+          update_cache: yes
+          upgrade: yes
+
+- name: Install docker
+  # Use recommended docker installation shell script
+  shell: curl -sSL https://get.docker.com | sh
+
+- name: Install kubernetes
+  apt:
+           name: "{{ item }}"
+           force: yes
+           state: present
+  with_items:
+          kubeadm

@@ -8,6 +8,10 @@
   include: hostname.yml
   when: hosts is defined
 
+- name: Setup system settings
+  include: system.yml
+  when: hosts is defined
+
 - name: Setup standard user
   include: user.yml
   when: password is defined and username is defined and hosts is defined

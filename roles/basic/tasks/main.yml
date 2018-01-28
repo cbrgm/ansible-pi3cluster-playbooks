@@ -1,17 +1,7 @@
 ---
 
-- name: Setup update and install basic packages (including docker, kubernetes)
-  include: apt.yml
-  when: hosts is defined
-
-- name: Change hostname to name specified in hostsfile
-  include: hostname.yml
-  when: hosts is defined
-
-- name: Setup system settings
+- name: Setup system settings and configure hostname
   include: system.yml
-  when: hosts is defined
 
-- name: Setup standard user
-  include: user.yml
-  when: password is defined and username is defined and hosts is defined
+- name: Update packages and install basic packages (including docker, kubernetes, weave)
+  include: apt.yml

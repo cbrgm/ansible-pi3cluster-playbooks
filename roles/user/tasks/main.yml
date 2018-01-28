@@ -1,0 +1,9 @@
+---
+
+- name: Setup user {{ user_name }}
+  include: user.yml
+  when: username is defined and password is defined
+
+- name: Generate key pair and copy ssh public key from host to remote user {{ user_name }} on {{ inventory_hostname }}
+  include: ssh.yml
+  when: copy_ssh_id is defined

@@ -1,0 +1,13 @@
+---
+
+- name: Setup default user for {{ hosts }}
+  hosts: '{{ hosts }}'
+  gather_facts: yes
+  become: true
+  become_method: sudo
+  vars:
+    user_password: '{{ password }}'
+    user_name: '{{ username }}'
+    copy_ssh_id: '{{ copy-ssh }}'
+  roles:
+    - user

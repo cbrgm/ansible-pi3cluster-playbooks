@@ -6,7 +6,6 @@
           repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
           filename: kubernetes
           state: present
-          
 
 - name: Update packages
   apt:
@@ -16,6 +15,12 @@
 - name: Install docker
   # Use recommended docker installation shell script
   shell: curl -sSL https://get.docker.com | sh
+
+- name: Install Weave Net as Container Network Interface
+  shell: curl -L git.io/weave -o /usr/local/bin/weave
+
+- name: Changing permissions of Weave Net Binary at /usr/local/bin/weave
+  file: dest=/usr/local/bin/weave mode=a+x
 
 - name: Install kubernetes
   apt:
